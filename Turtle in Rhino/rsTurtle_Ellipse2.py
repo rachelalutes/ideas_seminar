@@ -60,12 +60,3 @@ class Turtle:
         rs.ScaleObject(newEllipse, self.point, [1,ScaleFactor,0])
         newEllipse = rs.RotateObject(newEllipse,self.point,angle)
         rs.DeleteObject(centerPoint)
-        return(newEllipse)
-
-  
-bob = Turtle()
-bob.forward(10)
-bob.ellipse(3,2,'center',0)
-bob.right(30)
-bob.forward(5)
-bob.ellipse(3,2,'center',90)

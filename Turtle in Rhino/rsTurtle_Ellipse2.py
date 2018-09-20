@@ -46,12 +46,16 @@ class Turtle:
 #       when placement is edge
 #           0 will place ellipse to right of turtle
 #           90 will place ellipse above turtle with xheight and yheight appearing flipped
-#           180 will place ellips to left of turtle
+#           180 will place ellipse to left of turtle
 #           270 will place ellipse below turtle with xheight and yheight appearing flipped
 #   xheight and yheight are required
 #   placement and angle are optional and will default to center and 0 respectivly
 
     def ellipse(self, xheight, yheight, placement = 'center', angle = 0):
+        """xheight: the x dimension of the ellipse before rotation \n
+        yheight: the y dimension of the ellipse before rotation \n
+        placement: (optional) 'center' places ellipse centered around the turtle, 'edge' places ellipse to the side of the turtle \n
+        angle: (optional) rotates ellipse around the turtle's"""
         centerPoint = rs.AddPoint(self.point)
         if placement == 'edge':
             centerPoint = rs.MoveObject(centerPoint, rs.VectorScale(rs.VectorCreate([1,0,0],[0,0,0]), xheight/2))
@@ -60,3 +64,11 @@ class Turtle:
         rs.ScaleObject(newEllipse, self.point, [1,ScaleFactor,0])
         newEllipse = rs.RotateObject(newEllipse,self.point,angle)
         rs.DeleteObject(centerPoint)
+
+
+
+bob = Turtle()
+bob.ellipse
+for i in range(10):
+    bob.forward(10)
+    bob.ellipse(1,2,'edge',360/(i+1))

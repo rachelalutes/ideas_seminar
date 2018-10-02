@@ -25,15 +25,3 @@ for i in range(0,petalCount):
     #draw vector 
     newVector = rs.RotateObject(rs.VectorScale(rs.VectorUnitize(rs.VectorCreate(petalPoints[i],petalCenterLineMidPoint)),petalCurveWidth),petalCenterLineMidPoint,90)
     newPoint = rs.CopyObject(petalCenterLineMidPoint
-    #draw a line perpendicular to center line at the midpoint
-    #newLine = rs.AddLine(petalPoints[i],petalCenterLineMidPoint)
-    #rs.RotateObject(newLine,petalCenterLineMidPoint, 90)
-    #rs.HideObject(newLine)
-    #draw arc from center to edge through petal line point
-    #petalLinePoint = rs.CurveStartPoint(newLine)
-    #rs.AddArc3Pt(flowerCenter,petalPoints[i],petalLinePoint) 
-    #rotate 180 and mirror on other side
-    #rs.RotateObject(newLine,petalCenterLineMidPoint, 180)    
-    #petalLinePoint = rs.CurveStartPoint(newLine)
-    #rs.AddArc3Pt(flowerCenter,petalPoints[i],petalLinePoint)
-    #Draw optional circle in middle for center.

@@ -7,10 +7,14 @@ rs.DeleteObjects(rs.AllObjects('select'))
 #variables
 flowerRadius = 10 #radius of the flower
 centerRadius = 2 #radius of the center of the flower
-petalCount = 20
+petalCount = 15
 flowerCenter = (0,0,0) 
-petalWidth = 4 #width of the petals
+petalWidth = 6 #width of the petals
 petals = [] #store petal curves here
+
+#print out the variables
+textToPrint = 'flowerRadius = %d\ncenterRadius = %d\npetalCount = %d\npetalWidth = %d' %(flowerRadius,centerRadius,petalCount,petalWidth)
+rs.AddText(textToPrint, ((flowerRadius+1),2,0), height=1.0)
 
 #draw outer circle
 outerCircle = rs.AddCircle(flowerCenter,flowerRadius) 
@@ -46,11 +50,12 @@ for i in range(len(points)):
     #add petal outline to list of petals
     petals.append(rs.JoinCurves([curve,curve2]))
 
+#draw the flower center and raise it slightly
+flowerCenterLine = rs.AddCircle(flowerCenter,centerRadius)
+flowerCenterSrf = rs.MoveObject(rs.AddPlanarSrf(flowerCenterLine),[0,0,.1])
+
 #draw a surface for each petal
 petalSrfs = rs.AddPlanarSrf(petals)
-
-#draw the flower center and raise it slightly
-flowerCenterSrf = rs.MoveObject(rs.AddPlanarSrf(rs.AddCircle(flowerCenter,centerRadius)),[0,0,.1])
 
 #hide the curves and points
 rs.HideObjects(rs.ObjectsByType(4|1,True))
